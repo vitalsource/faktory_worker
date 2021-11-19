@@ -129,7 +129,7 @@ defmodule FaktoryWorker.Worker do
       |> String.split(".")
       |> Module.safe_concat()
 
-    job_ref = JobSupervisor.async_nolink(job_supervisor, job_module, job["args"])
+    job_ref = JobSupervisor.async_nolink(job_supervisor, job_module, job)
 
     reserve_for_seconds = Map.get(job, "reserve_for", @faktory_default_reserve_for)
     timeout_duration = reserve_timeout_duration(reserve_for_seconds)
