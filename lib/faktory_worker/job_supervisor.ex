@@ -14,13 +14,13 @@ defmodule FaktoryWorker.JobSupervisor do
     :"#{name}_job_supervisor"
   end
 
-  @spec async_nolink(module(), module(), list()) :: Task.t()
-  def async_nolink(job_supervisor, job_module, job_args) do
+  @spec async_nolink(module(), module(), map()) :: Task.t()
+  def async_nolink(job_supervisor, job_module, job) do
     Task.Supervisor.async_nolink(
       job_supervisor,
       job_module,
       :perform,
-      job_args,
+      (job["args"] ++ [Map.drop(job, ["args"])]),
       shutdown: :brutal_kill
     )
   end
