@@ -34,7 +34,7 @@ defmodule FaktoryWorker.Socket.Tcp do
   defp try_connect(host, port) do
     host = String.to_charlist(host)
 
-    :gen_tcp.connect(host, port, [:binary, active: false, packet: :line])
+    :gen_tcp.connect(host, port, [:binary, active: false, packet: :line, keepalive: true])
   end
 
   defp set_packet_mode(socket, mode), do: :inet.setopts(socket, packet: mode)
