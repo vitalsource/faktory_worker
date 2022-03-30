@@ -68,7 +68,7 @@ defmodule FaktoryWorker.Worker.HeartbeatServer do
   end
 
   def handle_info(:beat, state) do
-    {:noreply, %{state | beat_ref: nil}, {:continue, :schedule_beat}}
+    {:stop, :invalid_connection, state}
   end
 
   @impl true
