@@ -42,8 +42,7 @@ defmodule FaktoryWorker.Socket.Ssl do
       depth: 2,
       versions: [:"tlsv1.2"],
       verify: map_tls_verify(tls_verify),
-      cacerts: :certifi.cacerts(),
-      keepalive: true
+      cacerts: :certifi.cacerts()
     ]
 
     :ssl.connect(host, port, opts)
