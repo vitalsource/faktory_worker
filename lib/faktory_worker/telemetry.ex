@@ -38,12 +38,6 @@ defmodule FaktoryWorker.Telemetry do
     log_info("NOTUNIQUE", job.jid, job.args, job.jobtype)
   end
 
-  # TEMP: Heartbeat state
-
-  defp log_event(:heartbeat_state, %{status: :ok}, %{state: state}) do
-    log_info("Heartbeat state", state)
-  end
-
   # Beat events
 
   defp log_event(:beat, %{status: :ok}, %{wid: wid}) do

@@ -67,13 +67,13 @@ defmodule FaktoryWorker.Worker.HeartbeatServer do
     {:noreply, state, {:continue, :schedule_beat}}
   end
 
-  # state.beat_state will be error when faktory is down
-  def handle_info(:beat, state) do
-    Telemetry.execute(:heartbeat_state, :ok, %{
-      state: state
-    })
+  # Crash the server, allowing the Supervisor to restart it so we attempt to
+  # create a new connection when Faktory is disrupted.
+  def handle_info(:beat, %{beat_state: :error} = state) do
+    {:stop, :invalid_connection, state}
+  end
 
-    # {:stop, :invalid_connection, state}
+  def handle_info(:beat, state) do
     {:noreply, %{state | beat_ref: nil}, {:continue, :schedule_beat}}
   end
 
