@@ -40,16 +40,17 @@ defmodule FaktoryWorker.Telemetry do
 
   # Beat events
 
+  # no state change, status == status
+  defp log_event(:beat, %{status: status}, %{prev_status: status}) do
+    :ok
+  end
+
   defp log_event(:beat, %{status: :ok}, %{wid: wid}) do
     log_info("Heartbeat Succeeded", wid)
   end
 
   defp log_event(:beat, %{status: :error}, %{wid: wid}) do
     log_info("Heartbeat Failed", wid)
-  end
-
-  defp log_event(:beat, %{status: status}, %{wid: wid}) do
-    log_info("Heartbeat #{status}", wid)
   end
 
   # Fetch events
