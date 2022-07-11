@@ -4,7 +4,7 @@ defmodule FaktoryWorker.MixProject do
   def project do
     [
       app: :faktory_worker,
-      version: "1.6.0",
+      version: "1.9.0",
       elixir: "~> 1.8",
       description: description(),
       package: package(),
@@ -27,13 +27,12 @@ defmodule FaktoryWorker.MixProject do
 
   defp deps do
     [
-      {:broadway, "~> 1.0.0"},
       {:certifi, "~> 2.5"},
       {:excoveralls, "~> 0.10", only: :test},
       {:jason, "~> 1.1"},
       {:poolboy, "~> 1.5"},
       {:telemetry, "~> 0.4.0 or ~> 1.0"},
-      {:ex_doc, "~> 0.26.0", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.28.0", only: :dev, runtime: false},
       {:mox, "~> 1.0", only: :test}
     ]
   end
@@ -52,7 +51,8 @@ defmodule FaktoryWorker.MixProject do
       "README.md": [filename: "faktory-worker"],
       "docs/configuration.md": [title: "Configuration"],
       "docs/logging.md": [title: "Logging"],
-      "docs/sandbox-testing.md": [title: "Sandbox Testing"]
+      "docs/sandbox-testing.md": [title: "Sandbox Testing"],
+      "docs/mutate.md": [title: "Mutate API"]
     ]
   end
 
