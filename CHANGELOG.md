@@ -1,3 +1,23 @@
+## 1.9.3 - 2022-12-02
+
+###Fixes
+
+- Add ability to test code that contains faktory batches by returning default values for these rather than crashing/timing out
+
+## [1.9.2] - 2022-10-31
+
+### Fixes
+
+- Fixes issue where ports that timed our of were closed upstream were not closed in faktory_worker ([#172](https://github.com/opt-elixir/faktory_worker/pull/172))
+
+### Updates
+
+- Bump jason from 1.3.0 to 1.4.0 ([#170](https://github.com/opt-elixir/faktory_worker/pull/170))
+- Bump ex_doc from 0.28.4 to 0.28.5 ([#169](https://github.com/opt-elixir/faktory_worker/pull/169))
+## [1.9.1] - 2022-08-24
+
+- Add more granular warn/error level logging for various events in telemetry ([#166](https://github.com/opt-elixir/faktory_worker/pull/166))
+
 ## [1.9.0] - 2022-05-11
 
 - `FaktoryWorker.send_command/2` added to make one-off commands more ergonomic
